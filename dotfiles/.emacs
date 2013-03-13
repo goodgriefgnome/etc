@@ -160,4 +160,5 @@
     buffer))
 
 ; braindead stuff that trigger regexps of death easily.
+(compilation-minor-mode 0)
 (delete 'watcom compilation-error-regexp-alist)
