@@ -167,4 +167,5 @@
 (setq wg-prefix-key (kbd "C-c w"))
 (setq wg-switch-on-load nil)
 (setq wg-morph-on nil)
+(setq wg-mode-line-on nil)
 (workgroups-mode 1)
