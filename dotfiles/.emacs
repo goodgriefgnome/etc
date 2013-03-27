@@ -162,3 +162,9 @@
 ; braindead stuff that trigger regexps of death easily.
 (compilation-minor-mode 0)
 (delete 'watcom compilation-error-regexp-alist)
+
+(require 'workgroups)
+(setq wg-prefix-key (kbd "C-c w"))
+(setq wg-switch-on-load nil)
+(setq wg-morph-on nil)
+(workgroups-mode 1)

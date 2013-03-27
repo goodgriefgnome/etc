@@ -1,0 +1,3 @@
+[submodule "emacs.d/workgroups"]
+	path = emacs.d/workgroups
+	url = git://github.com/tlh/workgroups.el.git
