@@ -51,6 +51,7 @@
 
 (set-cursor-color "#888888")
 
+(require 'ffap)
 (defun ffap-near-mouse-other-window (e)
   (interactive "e")
   (mouse-set-point e)
