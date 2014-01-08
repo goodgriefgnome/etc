@@ -49,8 +49,6 @@
 	(background-color . "black")
         ))
 
-(set-cursor-color "#888888")
-
 (require 'ffap)
 (defun ffap-near-mouse-other-window (e)
   (interactive "e")
@@ -60,7 +58,8 @@
 (global-set-key [C-mouse-1] 'ffap-near-mouse-other-window)
 
 (defun setup-window-system-frame-options (&optional frame)
-  (set-frame-parameter frame 'fullscreen 'maximized))
+  (set-frame-parameter frame 'fullscreen 'maximized)
+  (set-cursor-color "#888888"))
 
 (defadvice log-edit-done (around keep-windows activate)
   "Stop vc from closing my windows."
@@ -170,3 +169,6 @@
 (setq wg-morph-on nil)
 (setq wg-mode-line-on nil)
 (workgroups-mode 1)
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
