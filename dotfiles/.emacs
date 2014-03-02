@@ -20,7 +20,13 @@
 (setq-default require-final-newline 'ask)
 (global-set-key (kbd "M-/") 'dabbrev-completion)
 (global-set-key (kbd "C-M-/") 'dabbrev-expand)
+(global-set-key (kbd "C-M-_") 'dabbrev-expand)
 (global-set-key (kbd "ESC M-w") 'clipboard-kill-ring-save)
+(global-set-key (kbd "M-r") 'isearch-backward-regexp)
+(global-set-key (kbd "M-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-c q q") 'query-replace)
+(global-set-key (kbd "C-c q w") 'query-replace-regexp)
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
 
 ;(setq font-lock-maximum-decoration 2)
 (setq jit-lock-chunk-size 100)
