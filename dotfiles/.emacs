@@ -27,6 +27,10 @@
 (global-set-key (kbd "C-c q q") 'query-replace)
 (global-set-key (kbd "C-c q w") 'query-replace-regexp)
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
+(global-set-key (kbd "M-<left>") 'windmove-left)
+(global-set-key (kbd "M-<right>") 'windmove-right)
+(global-set-key (kbd "M-<up>") 'windmove-up)
+(global-set-key (kbd "M-<down>") 'windmove-down)
 
 ;(setq font-lock-maximum-decoration 2)
 (setq jit-lock-chunk-size 100)
