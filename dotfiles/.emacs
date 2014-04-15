@@ -113,34 +113,24 @@
 (setq term-default-fg-color "white")
 (setq term-default-bg-color "black")
 (setq multi-term-program "/bin/zsh")
-(defun term-send-esc ()
-  "Send ESC in term mode."
+
+(defun term-send-next-raw ()
+  "Send the next character to the terminal."
   (interactive)
-  (term-send-raw-string "\e"))
-(setq-default term-buffer-maximum-size 99999)
+  (term-send-raw-string (char-to-string (read-quoted-char))))
 
 (setq term-bind-key-alist
-      '(("C-c C-c" . term-interrupt-subjob)
+      '(("C-q" . term-send-next-raw)
+        ("C-c C-c" . term-send-raw)
         ("C-c C-j" . term-line-mode)
         ("C-c C-k" . term-char-mode)
-	("ESC ESC" . term-send-esc)
-	("C-r" . term-send-reverse-search-history)
         ("C-y" . term-paste)
-;	("C-m" . term-send-raw)
-;	("M-f" . term-send-forward-word)
-;	("M-b" . term-send-backward-word)
+        ("C-v" . scroll-up-command)
 	("C-<right>" . term-send-forward-word)
 	("C-<left>" . term-send-backward-word)
-;	("M-o" . term-send-backspace)
-;	("M-p" . term-send-up)
-;	("M-n" . term-send-down)
-;	("M-M" . term-send-forward-kill-word)
-;	("M-N" . term-send-backward-kill-word)
-        ("C-<delete>" . term-send-forward-kill-word)
-;       ("M-<backspace>" . term-send-backward-kill-word)
-;	("M-r" . isearch-backward)
 ;	("M-," . term-send-input)
-	("M-." . comint-dynamic-complete)))
+	("M-d" . term-send-raw-meta)
+	("M-DEL" . term-send-raw-meta)))
 
 (defun setup-mode-width (width)
   "Sets up width parameters for the mode"
