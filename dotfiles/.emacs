@@ -117,6 +117,8 @@
 
 (setq term-bind-key-alist
       '(("C-c C-c" . term-interrupt-subjob)
+        ("C-c C-j" . term-line-mode)
+        ("C-c C-k" . term-char-mode)
 	("ESC ESC" . term-send-esc)
 	("C-r" . term-send-reverse-search-history)
         ("C-y" . term-paste)
