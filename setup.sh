@@ -2,6 +2,11 @@
 
 cd ${1:-$(dirname $0)}
 
+if [ "$SHELL" != "/bin/zsh" ]
+then
+  chsh -s /bin/zsh
+fi
+
 for file in $(find $(pwd)/dotfiles -maxdepth 1 -type f)
 do
   target=$HOME/$(basename $file)
