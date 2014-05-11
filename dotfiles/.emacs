@@ -28,9 +28,13 @@
 (global-set-key (kbd "C-c q w") 'query-replace-regexp)
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
 (global-set-key (kbd "M-<left>") 'windmove-left)
+(global-set-key (kbd "ESC <left>") 'windmove-left)
 (global-set-key (kbd "M-<right>") 'windmove-right)
+(global-set-key (kbd "ESC <right>") 'windmove-right)
 (global-set-key (kbd "M-<up>") 'windmove-up)
+(global-set-key (kbd "ESC <up>") 'windmove-up)
 (global-set-key (kbd "M-<down>") 'windmove-down)
+(global-set-key (kbd "ESC <down>") 'windmove-down)
 
 ;(setq font-lock-maximum-decoration 2)
 (setq jit-lock-chunk-size 100)
