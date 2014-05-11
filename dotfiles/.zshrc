@@ -49,7 +49,7 @@ then
 fi
 
 export EDITOR=emacsclient
-export VISUAL='emacsclient -c'
+export VISUAL=emacsclient
 export ALTERNATE_EDITOR=''
 
 ulimit -c unlimited
