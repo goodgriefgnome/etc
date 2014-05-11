@@ -2,7 +2,8 @@
 
 (setq-default fill-column 80)
 (global-auto-revert-mode)
-(tool-bar-mode 0)
+(if window-system (tool-bar-mode -1))
+(menu-bar-mode -1)
 (column-number-mode 1)
 (winner-mode 1)
 (setq tramp-mode nil)
@@ -104,11 +105,11 @@
         ("C-c C-k" . term-char-mode)
         ("C-y" . term-paste)
         ("C-v" . scroll-up-command)
-	("C-<right>" . term-send-forward-word)
-	("C-<left>" . term-send-backward-word)
+        ("C-<right>" . term-send-forward-word)
+        ("C-<left>" . term-send-backward-word)
 ;	("M-," . term-send-input)
-	("M-d" . term-send-raw-meta)
-	("M-DEL" . term-send-raw-meta)))
+        ("M-d" . term-send-raw-meta)
+        ("M-DEL" . term-send-raw-meta)))
 
 (defun setup-mode-width (width)
   "Sets up width parameters for the mode"
