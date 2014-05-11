@@ -55,6 +55,14 @@ export ALTERNATE_EDITOR=''
 ulimit -c unlimited
 
 # Keyboard bindings
-bindkey '^[[1;5C' vi-forward-word
-bindkey '^[[1;5D' emacs-backward-word
+case "$TERM" in
+  rxvt*)
+    bindkey '^[Oc' vi-forward-word
+    bindkey '^[Od' emacs-backward-word
+    ;;
+  xterm*)
+    bindkey '^[[1;5C' vi-forward-word
+    bindkey '^[[1;5D' emacs-backward-word
+    ;;
+esac
 bindkey '^[[3;5~' kill-word
