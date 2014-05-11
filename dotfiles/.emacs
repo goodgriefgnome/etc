@@ -54,15 +54,6 @@
  kept-old-versions 2
  version-control t)
 
-(setq default-frame-alist
-      '((tool-bar-lines . nil)
-	(vertical-scroll-bars . nil)
-	(background-mode . dark)
-	(font . "Monospace-10")
-	(foreground-color . "white")
-	(background-color . "black")
-        ))
-
 (require 'ffap)
 (defun ffap-near-mouse-other-window (e)
   (interactive "e")
@@ -71,20 +62,7 @@
 (global-unset-key [C-down-mouse-1])
 (global-set-key [C-mouse-1] 'ffap-near-mouse-other-window)
 
-(defun setup-window-system-frame-options (&optional frame)
-  (set-frame-parameter frame 'fullscreen 'maximized)
-  (set-cursor-color "#888888"))
-
-(defadvice log-edit-done (around keep-windows activate)
-  "Stop vc from closing my windows."
-  (save-window-excursion
-    ad-do-it))
-
 (require 'server)
-(defadvice server-create-window-system-frame (after custom-options activate)
-  "Setup custom frame options."
-  (setup-window-system-frame-options))
-(add-hook 'after-make-frame-functions 'setup-window-system-frame-options t)
 
 (require 'whole-line-or-region)
 (defadvice whole-line-or-region-kill-region (before read-only-ok activate)
@@ -96,8 +74,6 @@
 (setq-default transient-mark-mode t)
 (setq require-final-newline t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-;(setenv "TERM" "dumb")
-;(setenv "COLORTERM" "dumb")
 (setq find-file-visit-truename t)
 
 (set-variable 'confirm-kill-emacs nil)
@@ -114,8 +90,6 @@
 (global-set-key "\C-\M-z" 'toggle-window-dedicated)
 
 (require 'multi-term)
-(setq term-default-fg-color "white")
-(setq term-default-bg-color "black")
 (setq multi-term-program "/bin/zsh")
 
 (defun term-send-next-raw ()
