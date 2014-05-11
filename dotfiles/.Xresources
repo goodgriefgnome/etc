@@ -12,7 +12,7 @@ URxvt.internalBorder: 1
 URxvt.intensityStyles: false
 URxvt.iso14755: false
 URxvt.iso14755_52: false
-URxvt.perl-ext: tabbed_enh
+URxvt.perl-ext: tabbed_enh,-searchable-scrollback
 
 ! Solarized color scheme for the X Window System
 !
