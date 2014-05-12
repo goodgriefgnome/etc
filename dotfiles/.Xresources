@@ -47,7 +47,7 @@ URxvt.perl-ext: tabbed_enh,-searchable-scrollback
 *foreground:              Th_primary
 *background:              Th_primary_bg
 *fadeColor:               Th_primary_bg
-*fading:                  40
+*fading:                  10
 URxvt*cursorColor2:       Th_highlight_bg
 *cursorColor:             Th_highlight
 
