@@ -339,7 +339,7 @@ sub tab_key_press {
          $self->make_current ($self->{tabs}[$idx % @{ $self->{tabs}}]);
          return 1;
       }
-   } elsif ($keysym == 0xff0d && $ctrl) {
+   } elsif ($keysym == 0xff0d && $ctrl && $shift) {
       $self->new_tab;
       return 1;
    }
@@ -368,7 +368,7 @@ package urxvt::ext::tabbed_enh::tab;
 # simply proxies all interesting calls back to the tabbed class.
 
 {
-   for my $hook qw(start destroy key_press property_notify) {
+   for my $hook (qw(start destroy key_press property_notify)) {
       eval qq{
          sub on_$hook {
             my \$parent = \$_[0]{term}{parent}
