@@ -14,11 +14,13 @@
 (setq ido-use-filename-at-point 'guess)
 (setq ido-use-url-at-point nil)
 (setq ido-enable-tramp-completion nil)
+(setq ido-auto-merge-work-directories-length -1)
 (ido-mode 1)
 
 (setq dabbrev-case-fold-search nil)
 (setq-default indent-tabs-mode nil)
 (setq-default require-final-newline 'ask)
+(global-unset-key (kbd "C-x C-c"))
 (global-set-key (kbd "M-/") 'dabbrev-completion)
 (global-set-key (kbd "C-M-/") 'dabbrev-expand)
 (global-set-key (kbd "C-M-_") 'dabbrev-expand)
