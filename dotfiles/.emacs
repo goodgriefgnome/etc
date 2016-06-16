@@ -157,15 +157,6 @@
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 (add-to-list 'custom-theme-load-path "~/etc/emacs.d/emacs-color-theme-solarized")
-
-; Craziness to hack around the solarized color theme's use of display-color-cells.
-(defadvice display-color-cells (after max-sixteen disable)
-  "Make display-color-cells return at most 16."
-  (when (> ad-return-value 16) (setq ad-return-value 16)))
-(unless window-system
-  (ad-enable-advice 'display-color-cells 'after 'max-sixteen)
-  (ad-activate 'display-color-cells))
-(load-theme 'solarized-dark t)
-(unless window-system
-  (ad-disable-advice 'display-color-cells 'after 'max-sixteen)
-  (ad-activate 'display-color-cells))
+(setq frame-background-mode 'dark)
+(set-terminal-parameter nil 'background-mode 'dark)
+(load-theme 'solarized t)
