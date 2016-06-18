@@ -9,18 +9,20 @@ then
   chsh -s /bin/zsh
 fi
 
-find "$(pwd)/dotfiles" -mindepth 1 -maxdepth 1 -print0 | while read -d $'\0' file
-do
-  target="$HOME/$(basename $file)"
+process_dotfile() {
+  target="$HOME/$(basename "$1")"
 
   if [ -L "$target" ]
   then
     previous="$(readlink "$target")"
-    if [ "$file" != "$previous" ]
+    if [ "$1" != "$previous" ]
     then
-      echo "$(basename "$file"): Overwriting link previously pointing to $previous".
+      echo "$(basename "$1"): Overwriting link previously pointing to $previous".
     fi
     rm "$target"
   fi
-  ln -si "$file" "$target"
-done
+  ln -si "$1" "$target"
+}
+export -f process_dotfile
+
+find "$(pwd)/dotfiles" -mindepth 1 -maxdepth 1 -exec /bin/sh -c 'process_dotfile "$0"' '{}' ';'
