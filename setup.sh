@@ -1,29 +1,24 @@
 #!/bin/sh
 
-cd ${1:-$(dirname $0)}
+cd "${1:-$(dirname $0)}"
 
 if [ "$SHELL" != "/bin/zsh" ]
 then
   chsh -s /bin/zsh
 fi
 
-for file in $(find $(pwd)/dotfiles -mindepth 1 -maxdepth 1)
+find "$(pwd)/dotfiles" -mindepth 1 -maxdepth 1 -print0 | while read -d $'\0' file
 do
-  target=$HOME/$(basename $file)
+  target="$HOME/$(basename $file)"
 
-  if [ -e "$target" ]
+  if [ -L "$target" ]
   then
-    if [ -L "$target" ]
+    previous="$(readlink "$target")"
+    if [ "$file" != "$previous" ]
     then
-      previous=$(readlink "$target")
-      if [ "$file" != "$previous" ]
-      then
-        echo $(basename $file): Overwriting link previously pointing to $(readlink "$target").
-      fi
-    else
-      echo $(basename $file): Skipping because target is a real file.
-      continue
+      echo "$(basename "$file"): Overwriting link previously pointing to $previous".
     fi
+    rm "$target"
   fi
-  ln -sf $file $target
+  ln -si "$file" "$target"
 done
