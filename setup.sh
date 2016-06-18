@@ -2,7 +2,9 @@
 
 cd "${1:-$(dirname $0)}"
 
-if [ "$SHELL" != "/bin/zsh" ]
+[[ -e "termdefs" ]] && tic termdefs
+
+if [[ "$SHELL" != "/bin/zsh" ]]
 then
   chsh -s /bin/zsh
 fi

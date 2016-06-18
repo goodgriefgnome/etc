@@ -42,10 +42,11 @@ zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 
-if [ -n "$INSIDE_EMACS" ]
+if [[ -n "$INSIDE_EMACS" ]]
 then
-  chpwd() { print -P "\032/%d" }
-  chpwd
+  autoload -U add-zsh-hook
+  update_emacs_pwd() { print -P "\032/%d" }
+  add-zsh-hook chpwd update_emacs_pwd
 fi
 
 ulimit -c unlimited
