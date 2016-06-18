@@ -38,6 +38,7 @@
 (global-set-key (kbd "ESC <up>") 'windmove-up)
 (global-set-key (kbd "M-<down>") 'windmove-down)
 (global-set-key (kbd "ESC <down>") 'windmove-down)
+(global-set-key (kbd "<f5>") 'recompile)
 
 ; Because emacs seems confused by tmux.
 (global-set-key (kbd "M-[ C") 'right-word)
