@@ -39,6 +39,10 @@
 (global-set-key (kbd "M-<down>") 'windmove-down)
 (global-set-key (kbd "ESC <down>") 'windmove-down)
 
+; Because emacs seems confused by tmux.
+(global-set-key (kbd "M-[ C") 'right-word)
+(global-set-key (kbd "M-[ D") 'left-word)
+
 ;(setq font-lock-maximum-decoration 2)
 (setq jit-lock-chunk-size 100)
 (setq jit-lock-context-time 10)
@@ -109,6 +113,9 @@
         ("C-v" . scroll-up-command)
         ("C-<right>" . term-send-forward-word)
         ("C-<left>" . term-send-backward-word)
+        ; Because emacs seems confused by tmux.
+        ("M-[ C" . term-send-forward-word)
+        ("M-[ D" . term-send-backward-word)
 ;	("M-," . term-send-input)
         ("M-d" . term-send-raw-meta)
         ("M-DEL" . term-send-raw-meta)))
