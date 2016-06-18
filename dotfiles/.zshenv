@@ -1,12 +1,6 @@
-DIRSTACKSIZE=32
+export EDITOR=emacsclient
+export VISUAL=emacsclient
+export ALTERNATE_EDITOR=''
 
-HISTFILE=~/.zsh_history
-HISTSIZE=9999999
-SAVEHIST=999999
-
-WORDCHARS="_"
-EDITOR=emacsclient
-VISUAL=emacsclient
-ALTERNATE_EDITOR=''
-
+typeset -U path
 [[ -d "$HOME/bin" ]] && path=("$HOME/bin" $path)

@@ -1,3 +1,5 @@
+DIRSTACKSIZE=32
+
 setopt auto_cd
 setopt auto_pushd pushd_ignore_dups pushd_silent
 
@@ -9,6 +11,10 @@ setopt glob_complete
 
 setopt no_bad_pattern case_glob case_match glob no_nomatch
 setopt warn_create_global
+
+HISTFILE=~/.zsh_history
+HISTSIZE=9999999
+SAVEHIST=999999
 
 setopt extended_history
 setopt hist_ignore_space hist_reduce_blanks
@@ -27,6 +33,8 @@ setopt check_jobs no_hup
 setopt c_precedences
 
 setopt emacs
+
+WORDCHARS="_"
 
 zstyle ':completion:*' completer _complete _ignored
 zstyle :compinstall filename "$HOME/.zshrc"
