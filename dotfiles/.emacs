@@ -161,3 +161,6 @@
 (setq frame-background-mode 'dark)
 (set-terminal-parameter nil 'background-mode 'dark)
 (load-theme 'solarized t)
+
+; Git support in VC is irritating because of git locks.
+(setq vc-handled-backends (delete 'Git vc-handled-backends))
