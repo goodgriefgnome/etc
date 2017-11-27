@@ -39,8 +39,9 @@ WORDCHARS="_"
 zstyle ':completion:*' completer _complete _ignored
 zstyle :compinstall filename "$HOME/.zshrc"
 
-autoload -Uz compinit
+autoload -Uz compinit bashcompinit
 compinit
+bashcompinit
 
 if [[ -n "$INSIDE_EMACS" ]]
 then
