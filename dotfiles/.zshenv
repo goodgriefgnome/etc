@@ -1,6 +1,7 @@
 export EDITOR=emacsclient
 export VISUAL=emacsclient
 export ALTERNATE_EDITOR=''
+export GOPATH="$HOME/gopath"
 
 typeset -U path
-[[ -d "$HOME/bin" ]] && path=("$HOME/bin" $path)
+path=("$HOME/bin" "$GOPATH/bin" $path)
