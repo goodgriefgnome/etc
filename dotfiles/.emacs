@@ -1,7 +1,6 @@
 (add-to-list 'load-path "~/etc/emacs.d")
 
 (setq-default fill-column 80)
-(global-auto-revert-mode)
 (if window-system (tool-bar-mode -1))
 (menu-bar-mode -1)
 (column-number-mode 1)
@@ -101,6 +100,12 @@
   (interactive)
   (term-send-raw-string (char-to-string (read-quoted-char))))
 
+(defun term-set-mark-command (arg)
+  "Starts a mark from char mode"
+  (interactive "P")
+  (term-line-mode)
+  (set-mark-command arg))
+
 (setq term-bind-key-alist
       '(("C-q" . term-send-next-raw)
         ("C-c C-c" . term-send-raw)
@@ -112,7 +117,10 @@
         ("C-<left>" . term-send-backward-word)
 ;	("M-," . term-send-input)
         ("M-d" . term-send-raw-meta)
-        ("M-DEL" . term-send-raw-meta)))
+        ("M-DEL" . term-send-raw-meta)
+        ("C-@" . term-set-mark-command)))
+
+(define-key term-mode-map (kbd "C-c C-c") 'term-char-mode)
 
 (defun setup-mode-width (width)
   "Sets up width parameters for the mode"
@@ -162,5 +170,17 @@
 (set-terminal-parameter nil 'background-mode 'dark)
 (load-theme 'solarized t)
 
-; Git support in VC is irritating because of git locks.
-(setq vc-handled-backends (delete 'Git vc-handled-backends))
+; VC is super slow. just disable it in general.
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (global-auto-revert-mode 0)
+            (setq vc-handled-backends 'nil)))
+
+(add-hook 'window-configuration-change-hook
+          (lambda ()
+            (dolist (b (buffer-list 'nil))
+              (with-current-buffer b
+                (auto-revert-mode
+                 (if (and (get-buffer-window 'nil 'visible)
+                          buffer-file-name)
+                     1 0))))))

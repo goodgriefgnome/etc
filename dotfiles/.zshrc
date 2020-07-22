@@ -15,11 +15,10 @@ setopt warn_create_global
 HISTFILE=~/.zsh_history
 HISTSIZE=9999999
 SAVEHIST=999999
-
 setopt extended_history
 setopt hist_ignore_space hist_reduce_blanks
-setopt hist_ignore_all_dups hist_find_no_dups hist_save_no_dups
-setopt inc_append_history
+setopt hist_find_no_dups hist_save_no_dups
+setopt inc_append_history_time
 
 setopt aliases
 setopt no_clobber
@@ -64,3 +63,6 @@ case "$TERM" in
     ;;
 esac
 bindkey '^[[3;5~' kill-word
+
+REPORTTIME=0
+TIMEFMT="# %J  %U user %S system %P cpu %*E total"
